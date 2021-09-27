@@ -39,6 +39,7 @@ node index.js
 Rotas
 ```
 GET localhost:3000/compras
+GET localhost:3000/compras/:id
 POST localhost:3000/compras
 PUT localhost:3000/compras/:id
 DELETE localhost:3000/compras/:id
