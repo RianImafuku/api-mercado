@@ -52,6 +52,73 @@ Controller e Rota listar
 .get("/compras", purchases.GETpurchases)
 ```
 
+Controller e Rota listar o selecionado
+```
+    GETpurchase:(req,res)=>{
+        const id = req.params.id;
+        const query = `SELECT * FROM lista_compras WHERE id='${id}'`;
+        conn.query(query,(error,results)=>{
+            if (error) throw error;
+            res.status(200).json(results[0]);
+        })
+    },
+    
+```
+
+```
+.get("/compras/:id", purchases.GETpurchase) 
+```
+Controller e Rota inserir
+```
+    POSTpurchases:(req,res)=>{
+        const { nome, valor } = req.body;
+        const query = `INSERT INTO lista_compras SET nome='${nome}', valor='${valor}'`;
+        conn.query(query,(error,results)=>{
+            if (error) throw error;
+            res.status(200).json({ success:"produto inserido com sucesso" });
+        })
+    },
+    
+```
+
+```
+.post("/compras", purchases.POSTpurchases) 
+```
+
+Controller e Rota atualizar
+```
+    PUTpurchase:(req,res)=>{
+        const id = req.params.id;
+        const { nome, valor } = req.body;
+        const query = `UPDATE lista_compras SET nome='${nome}', valor='${valor}' WHERE id='${id}'`;
+        conn.query(query,(error,results)=>{
+            if (error) throw error;
+            res.status(200).json({ success:"produto atualizado com sucesso" });
+        })
+    },
+    
+```
+
+```
+.put("/compras/:id", purchases.PUTpurchase) 
+```
+
+Controller e Rota deletar
+```
+    DELETEpurchase:(req,res)=>{
+        const id = req.params.id;
+        const query = `DELETE FROM lista_compras WHERE id='${id}'`;
+        conn.query(query,(error,results)=>{
+            if (error) throw error;
+            res.status(200).json({ success:"produto deletado com sucesso" });
+        })
+    }
+    
+```
+
+```
+.delete("/compras/:id", purchases.DELETEpurchase) 
+```
 
 Campos para POST e PUT
 ```
