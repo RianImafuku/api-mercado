@@ -36,14 +36,19 @@ Iniciar projeto sem nodemon:
 node index.js
 ```
 
-Rotas
+Controller e Rota listar
 ```
-GET localhost:3000/compras
-GET localhost:3000/compras/:id
-POST localhost:3000/compras
-PUT localhost:3000/compras/:id
-DELETE localhost:3000/compras/:id
+    GETpurchases:(req,res)=>{
+        const query = "SELECT * FROM lista_compras";
+        conn.query(query,(error,results)=>{
+            if (error) throw error;
+            res.status(200).json(results);
+        })
+    },
+    
+ .get("/compras", purchases.GETpurchases)
 ```
+
 
 Campos para POST e PUT
 ```
