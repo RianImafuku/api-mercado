@@ -46,7 +46,10 @@ Controller e Rota listar
         })
     },
     
- .get("/compras", purchases.GETpurchases)
+```
+
+```
+.get("/compras", purchases.GETpurchases)
 ```
 
 
